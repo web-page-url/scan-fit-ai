@@ -58,14 +58,31 @@ export default function Home() {
   return (
     <AppShell>
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-primary mb-4 glow">
-            ScanFit: AI-Powered Job & Resume Matcher
-          </h1>
-          <p className="text-lg text-foreground/80 max-w-2xl mx-auto">
-            Upload or paste your job description and resume. Our AI will analyze the match,
-            highlight strengths and weaknesses, and provide actionable suggestions to boost your chances.
-          </p>
+        <div className="text-center mb-12">
+          <div>
+            <h1 className="text-5xl md:text-6xl font-bold font-mono mb-6 tracking-wider">
+              <span className="bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+                SCAN
+              </span>
+              <span className="text-cyan-300">FIT</span>
+            </h1>
+
+            <p className="text-xl text-cyan-100 max-w-3xl mx-auto leading-relaxed font-mono">
+              <span className="text-purple-300">AI-POWERED</span> JOB & RESUME MATCHER
+            </p>
+
+            <p className="text-base text-slate-300 max-w-2xl mx-auto mt-4 leading-relaxed">
+              Upload or paste your job description and resume. Our advanced AI will analyze compatibility,
+              highlight strengths and weaknesses, and provide actionable suggestions to boost your job application success.
+            </p>
+
+            {/* Decorative elements */}
+            <div className="flex justify-center items-center gap-4 mt-6">
+              <div className="w-16 h-0.5 bg-gradient-to-r from-transparent to-cyan-400"></div>
+              <div className="w-3 h-3 bg-cyan-400 rounded-full"></div>
+              <div className="w-16 h-0.5 bg-gradient-to-l from-transparent to-purple-400"></div>
+            </div>
+          </div>
         </div>
 
         <div className="grid md:grid-cols-2 gap-6 mb-8">
