@@ -8,6 +8,7 @@ import { AppShell } from '../app/components/app-shell';
 import { InputPanel } from '../app/components/input-panel';
 import { AnalyzeButton } from '../app/components/analyze-button';
 import { ProgressLoader } from '../app/components/progress-loader';
+import LightRays from '../app/components/light-rays';
 
 export default function Home() {
   const router = useRouter();
@@ -58,8 +59,24 @@ export default function Home() {
   return (
     <AppShell>
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-12">
-          <div>
+        <div className="text-center mb-12 relative">
+          {/* WebGL Background Effects */}
+          <div className="absolute inset-0 z-0">
+            <LightRays
+              raysOrigin="top-center"
+              raysColor="#00ffff"
+              raysSpeed={1.5}
+              lightSpread={0.8}
+              rayLength={1.2}
+              followMouse={true}
+              mouseInfluence={0.1}
+              noiseAmount={0.1}
+              distortion={0.05}
+              className="opacity-60"
+            />
+          </div>
+
+          <div className="relative z-10">
             <h1 className="text-5xl md:text-6xl font-bold font-mono mb-6 tracking-wider">
               <span className="bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
                 SCAN
