@@ -1,0 +1,217 @@
+Excellent choice 💥 — **“ScanFit”** sounds clean, futuristic, and perfectly fits your app’s concept (AI that *scans resumes and fits them* to jobs).
+
+Here’s your **refined, ready-to-give-to Cursor or Killo code** prompt, updated to use the brand name **ScanFit** throughout, and polished for clarity, tone, and branding consistency.
+No code — just the **final developer prompt specification** 👇
+
+---
+
+# 🚀 Project Prompt — **ScanFit: AI-Powered Job & Resume Matcher**
+
+---
+
+## 🧭 Overview
+
+Build a **Next.js 16** web application named **ScanFit**, an AI-powered platform that intelligently compares **job descriptions** and **resumes**, providing deep analysis, ATS optimization insights, and actionable suggestions for improvement.
+
+**ScanFit** helps users instantly understand how well their resume fits a job — highlighting missing keywords, formatting issues, and personalized rewrite suggestions to improve their chances of getting shortlisted.
+
+The app should be:
+
+* Visually **eye-catching** with a **cyber-themed, neon-dark design**
+* Fully **mobile responsive**
+* **Component-wise structured** for scalability and readability
+* Integrated with the **Gemini API** for intelligent analysis
+
+---
+
+## 🧱 Core Features
+
+### 1. Dual Input System
+
+Users can provide:
+
+* **Job Description** → via text area or upload (`.pdf`, `.docx`, `.txt`)
+* **Resume** → via text area or upload (`.pdf`, `.docx`, `.txt`)
+
+Each input should have:
+
+* A toggle to switch between text input and file upload
+* Drag-and-drop file upload with parsing preview
+* Clear placeholders and examples
+
+---
+
+### 2. AI Analysis (Gemini API Integration)
+
+After both inputs are provided, the **Gemini API** should:
+
+* Parse and compare the job description and resume
+* Generate a structured JSON response with:
+
+  * `match_score` (0–100)
+  * `missing_keywords` (skills or terms missing)
+  * `strengths` (keywords that match)
+  * `ats_recommendations` (improvements for ATS systems)
+  * `rewrite_suggestions` (optimized lines or bullets)
+  * `priority_actions` (ranked by impact)
+  * `summary` (a natural language overview)
+  * `confidence` (Low / Medium / High for each recommendation)
+
+---
+
+### 3. AI Output Report (Visually Engaging)
+
+The **results screen** should display:
+
+* **Overall Match Score** in a neon circular progress gauge
+* **Top Strengths & Weaknesses** side-by-side
+* **ATS Optimization Checklist** with ✅ / ⚠️ icons
+* **Missing Keywords Section** (highlighted keywords)
+* **Rewrite Suggestions Panel** with “Accept / Reject” buttons
+* **Action Priority Board** — top 5 steps to boost score
+* **Export Options** → Download improved resume (`PDF / DOCX`)
+
+---
+
+### 4. Cyber-Themed UI / UX Design
+
+Visual direction:
+
+* **Dark background**, **neon gradients** (electric blue, cyan, magenta, purple glows)
+* **Glassmorphism cards** with glowing borders
+* **Animated progress visuals** (e.g., scanning effect, radar sweep)
+* Futuristic monospace typography for headings (`Orbitron`, `Space Grotesk`, etc.)
+* Minimal motion effects → hover glows, gradient sweeps, and gentle fade-in transitions
+* All elements must be mobile-friendly with touch support
+
+---
+
+## 🧩 Component Structure (Everything Component-Wise)
+
+Each section of ScanFit should be built as a **dedicated reusable component**, such as:
+
+| Component            | Purpose                                           |
+| -------------------- | ------------------------------------------------- |
+| `AppShell`           | Main layout with header, footer, theme toggle     |
+| `InputPanel`         | Dual panel for Job Description & Resume           |
+| `FileUploader`       | Handles file upload and parsing                   |
+| `AnalyzeButton`      | CTA to trigger Gemini analysis                    |
+| `ProgressLoader`     | Animated loader during analysis                   |
+| `ScoreDisplay`       | Neon circular gauge showing match score           |
+| `ATSChecklist`       | Displays ATS optimization recommendations         |
+| `KeywordDiff`        | Shows matched vs missing keywords                 |
+| `RewriteSuggestions` | Editable list of AI-suggested resume improvements |
+| `ActionBoard`        | Top 5 improvement priorities                      |
+| `ExportOptions`      | Allows export of revised resume (PDF/DOCX)        |
+| `ThemeToggle`        | Switch between light/dark (default: cyber-dark)   |
+| `PrivacyNotice`      | Simple modal explaining data handling             |
+
+---
+
+## ⚙️ Tech Stack Requirements
+
+| Area             | Tech                                          |
+| ---------------- | --------------------------------------------- |
+| Framework        | **Next.js 16 (App Router)**                   |
+| Language         | **TypeScript**                                |
+| Styling          | **Tailwind CSS** (with custom neon utilities) |
+| State Management | **Zustand** or **Context API**                |
+| File Parsing     | `pdf-parse`, `mammoth`, or equivalent         |
+| AI               | **Gemini API** (server-side call only)        |
+| Exporting        | `pdfkit` / `docx` libraries for downloads     |
+| Deployment       | **Vercel**                                    |
+| Testing          | Jest + Playwright (E2E)                       |
+| Accessibility    | WCAG 2.1 AA compliance                        |
+
+---
+
+## 🧠 AI Logic (Gemini Prompt Flow)
+
+When the user clicks **“Analyze”**, the backend:
+
+1. Parses both inputs → extracts text + sections (Experience, Skills, Education)
+2. Builds a structured prompt to Gemini:
+
+   * Compares resume vs job requirements
+   * Identifies gaps and improvements
+   * Outputs **strict JSON schema**
+3. Validates Gemini’s response → returns clean JSON to frontend
+
+Ensure the prompt is **schema-driven** and Gemini always outputs **valid JSON**.
+
+---
+
+## 🧑‍💻 UX Flow
+
+1. User lands on ScanFit homepage → “Upload or Paste Job Description” + “Upload or Paste Resume” panels.
+2. After both inputs are filled → “Scan & Fit” button activates.
+3. On click → show **Scanning animation** (“Analyzing Resume & Job Match…”).
+4. AI generates the report → visually displayed as modular cards.
+5. User can interact with suggestions, accept changes, and download the optimized resume.
+
+---
+
+## 🔒 Privacy & Security
+
+* Resume & job data processed **temporarily only** (in-memory; not stored).
+* Explicit note in footer: *“ScanFit does not save your data. All analyses are private and temporary.”*
+* HTTPS enforced.
+* Gemini API key stored securely in server environment variables.
+
+---
+
+## 📊 Example Output Sections
+
+**Match Score:** `82/100`
+**Top Strengths:** JavaScript, React, Next.js, REST APIs
+**Missing Keywords:** TypeScript, CI/CD, Unit Testing
+**ATS Issues:** No keywords in summary, inconsistent section titles
+**Suggestions:** Add metrics to achievements, include job title in header
+**Priority Actions:**
+
+1. Add “TypeScript” in Skills section
+2. Quantify project outcomes
+3. Improve section ordering for ATS
+4. Add certifications
+5. Simplify resume formatting
+
+---
+
+## 🎨 Design Theme Keywords
+
+Use these as inspiration for the design system:
+
+```
+#0f0f1a (Background)
+#00e0ff (Primary Neon)
+#ff00e6 (Accent Neon)
+#b0f7ff (Glow Highlights)
+Glass Panels • Cyber Grid • Hover Glows • Animated Scan Lines
+Font: Orbitron / Space Grotesk
+```
+
+---
+
+## ✅ Acceptance Criteria
+
+* Users can input/paste or upload both resume and job description.
+* Gemini analysis runs and returns structured insights.
+* Results displayed beautifully with cyber-neon theme.
+* All major flows are responsive and accessible.
+* Resume can be exported after accepting AI improvements.
+* Components are clean, modular, and reusable.
+* Deployed and functional on Vercel.
+
+---
+
+## 🧾 One-Line Tagline for Marketing
+
+> **ScanFit — Let AI scan your resume, fit your dream job.** ⚡
+
+---
+
+Would you like me to now:
+
+1. ✳️ Write the **Gemini API system + user prompt** (with the exact JSON schema),
+   or
+2. 🎨 Create a **color palette, font set, and UI moodboard description** for ScanFit’s cyber-neon brand?
