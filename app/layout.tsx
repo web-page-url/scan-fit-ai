@@ -24,14 +24,14 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
-  metadataBase: new URL('https://scanfit-ai.vercel.app'), // Replace with your actual domain
+  metadataBase: new URL('https://scan-fit-ai.vercel.app'),
   alternates: {
     canonical: '/',
   },
   openGraph: {
     title: "ScanFit - AI-Powered Job & Resume Matcher",
     description: "Let AI scan your resume, fit your dream job. Analyze job descriptions and resumes with intelligent matching and optimization suggestions.",
-    url: "https://scanfit-ai.vercel.app", // Replace with your actual domain
+    url: "https://scan-fit-ai.vercel.app",
     siteName: "ScanFit",
     images: [
       {
@@ -50,7 +50,7 @@ export const metadata: Metadata = {
     title: "ScanFit - AI-Powered Job & Resume Matcher",
     description: "Let AI scan your resume, fit your dream job. Analyze job descriptions and resumes with intelligent matching and optimization suggestions.",
     images: ["/scan-fit.png"],
-    creator: "@scanfit", // Replace with your Twitter handle
+    creator: "@scanfit_ai",
   },
   robots: {
     index: true,
@@ -84,6 +84,33 @@ export const metadata: Metadata = {
     ],
   },
   manifest: "/site.webmanifest",
+  other: {
+    "application/ld+json": JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "ScanFit",
+      "description": "AI-powered job and resume matcher that analyzes compatibility between job descriptions and resumes, providing intelligent matching and optimization suggestions.",
+      "url": "https://scan-fit-ai.vercel.app",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web Browser",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "featureList": [
+        "AI-powered resume analysis",
+        "Job description compatibility scoring",
+        "Resume optimization suggestions",
+        "File upload support (PDF, DOCX, TXT)",
+        "Export optimized resumes"
+      ],
+      "author": {
+        "@type": "Organization",
+        "name": "ScanFit"
+      }
+    }),
+  },
 };
 
 export default function RootLayout({
