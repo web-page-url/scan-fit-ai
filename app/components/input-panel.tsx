@@ -54,21 +54,21 @@ export function InputPanel({ title, value, onChange, onFileChange, placeholder }
       </CardHeader>
       <CardContent>
           {/* Mode Toggle Buttons - More Prominent */}
-          <div className="flex gap-4 p-2 mb-4 bg-slate-800/50 rounded-lg border border-cyan-500/30">
+          <div className="flex gap-3 p-2 mb-4 bg-gradient-to-r from-slate-800/40 to-slate-900/40 rounded-xl border border-cyan-500/20 backdrop-blur-sm">
             <Button
-              variant={inputMode === 'text' ? 'primary' : 'secondary'}
+              variant={inputMode === 'text' ? 'primary' : 'ghost'}
               size="md"
               onClick={() => setInputMode('text')}
-              className="flex-1 font-bold px-6 py-3 text-sm"
+              className="flex-1 font-bold px-4 py-2 text-xs tracking-wide"
               glow={false}
             >
               ✏️ TEXT INPUT
             </Button>
             <Button
-              variant={inputMode === 'file' ? 'primary' : 'secondary'}
+              variant={inputMode === 'file' ? 'primary' : 'ghost'}
               size="md"
               onClick={() => setInputMode('file')}
-              className="flex-1 font-bold px-6 py-3 text-sm"
+              className="flex-1 font-bold px-4 py-2 text-xs tracking-wide"
               glow={false}
             >
               📁 UPLOAD FILE
@@ -83,15 +83,15 @@ export function InputPanel({ title, value, onChange, onFileChange, placeholder }
               className={cn(
                 "w-full h-64 p-4 font-mono text-sm",
                 "bg-slate-900/50 border-2 border-cyan-500/30 rounded-lg",
-                "text-cyan-100 placeholder-slate-400",
+                "text-cyan-100 placeholder:text-cyan-400/60",
                 "focus:outline-none focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/20",
                 "resize-none transition-all duration-300",
                 "hover:border-cyan-400/50",
                 "backdrop-blur-sm"
               )}
             />
-            <div className="absolute bottom-2 right-2 text-xs text-slate-400">
-              {value.length} characters
+            <div className="absolute bottom-3 right-3 px-2 py-1 bg-slate-800/80 rounded-md border border-cyan-500/20 text-xs text-cyan-300/80 font-mono backdrop-blur-sm">
+              {value.length} chars
             </div>
           </div>
         ) : (

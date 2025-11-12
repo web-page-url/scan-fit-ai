@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "generate-favicons": "node scripts/generate-favicons.js"
   },
   "dependencies": {
     "@google/generative-ai": "^0.21.0",
@@ -19,6 +20,7 @@
     "pdfkit": "^0.15.0",
     "react": "19.2.0",
     "react-dom": "19.2.0",
+    "sharp": "^0.34.5",
     "tailwind-merge": "^2.3.0",
     "zustand": "^5.0.0"
   },

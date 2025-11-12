@@ -1,0 +1,22 @@
+{
+  "name": "ScanFit - AI-Powered Job & Resume Matcher",
+  "short_name": "ScanFit",
+  "description": "Let AI scan your resume, fit your dream job. Analyze job descriptions and resumes with intelligent matching and optimization suggestions.",
+  "icons": [
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#00e0ff",
+  "background_color": "#0f0f1a",
+  "display": "standalone",
+  "start_url": "/",
+  "scope": "/"
+}

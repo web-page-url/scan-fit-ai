@@ -78,7 +78,10 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     const glowEffect = glow ? `
       filter drop-shadow(0 0 8px currentColor)
       hover:drop-shadow(0 0 16px currentColor)
-    ` : '';
+    ` : `
+      filter drop-shadow(0 0 2px currentColor)
+      hover:drop-shadow(0 0 4px currentColor)
+    `;
 
     return (
       <button
@@ -90,15 +93,20 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
           {props.children}
         </span>
 
-        {/* Circuit pattern overlay */}
-        <div className="absolute inset-0 opacity-10 pointer-events-none">
+        {/* Circuit pattern overlay - reduced for non-glowing buttons */}
+        <div className={cn(
+          "absolute inset-0 pointer-events-none",
+          glow ? "opacity-10" : "opacity-5"
+        )}>
           <div className="w-full h-full bg-circuit-pattern animate-pulse"></div>
         </div>
 
-        {/* Glitch effect on hover */}
-        <div className="absolute inset-0 opacity-0 hover:opacity-20 transition-opacity duration-300 pointer-events-none">
-          <div className="w-full h-full bg-glitch-pattern animate-glitch"></div>
-        </div>
+        {/* Glitch effect on hover - only for glowing buttons */}
+        {glow && (
+          <div className="absolute inset-0 opacity-0 hover:opacity-20 transition-opacity duration-300 pointer-events-none">
+            <div className="w-full h-full bg-glitch-pattern animate-glitch"></div>
+          </div>
+        )}
       </button>
     );
   }
