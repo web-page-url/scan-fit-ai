@@ -121,7 +121,7 @@ export default function Home() {
 
         <AnalyzeButton
           onClick={handleAnalyze}
-          disabled={!jobDescription.trim() || !resume.trim()}
+          disabled={(!jobDescription.trim() && !jobDescriptionFile) || (!resume.trim() && !resumeFile)}
           isAnalyzing={isAnalyzing}
         />
       </div>

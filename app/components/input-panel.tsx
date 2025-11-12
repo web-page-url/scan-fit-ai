@@ -21,6 +21,18 @@ export function InputPanel({ title, value, onChange, onFileChange, placeholder }
   const [isDragging, setIsDragging] = useState(false);
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
 
+  const handleModeSwitch = (mode: 'text' | 'file') => {
+    setInputMode(mode);
+    if (mode === 'text') {
+      // Clear file when switching to text mode
+      setSelectedFile(null);
+      onFileChange?.(null);
+      // Reset file input
+      const fileInput = document.getElementById(`file-input-${title}`) as HTMLInputElement;
+      if (fileInput) fileInput.value = '';
+    }
+  };
+
   const handleDrop = (e: React.DragEvent) => {
     e.preventDefault();
     setIsDragging(false);
@@ -28,6 +40,8 @@ export function InputPanel({ title, value, onChange, onFileChange, placeholder }
     if (file) {
       setSelectedFile(file);
       onFileChange?.(file);
+      // Switch to file mode when a file is dropped
+      setInputMode('file');
     }
   };
 
@@ -36,6 +50,8 @@ export function InputPanel({ title, value, onChange, onFileChange, placeholder }
     if (file) {
       setSelectedFile(file);
       onFileChange?.(file);
+      // Switch to file mode when a file is selected
+      setInputMode('file');
     }
   };
 
@@ -45,9 +61,23 @@ export function InputPanel({ title, value, onChange, onFileChange, placeholder }
           <div className="flex items-center justify-between">
             <CardTitle className="text-cyan-400 font-bold text-lg">{title}</CardTitle>
             {selectedFile && (
-              <div className="flex items-center gap-2 px-3 py-2 bg-green-500/20 border border-green-400/50 rounded-lg animate-pulse">
-                <span className="text-green-400">📎</span>
-                <span className="text-green-300 font-mono text-sm">{selectedFile.name}</span>
+              <div className="flex items-center justify-between gap-2 px-3 py-2 bg-green-500/20 border border-green-400/50 rounded-lg">
+                <div className="flex items-center gap-2">
+                  <span className="text-green-400">📎</span>
+                  <span className="text-green-300 font-mono text-sm">{selectedFile.name}</span>
+                </div>
+                <button
+                  onClick={() => {
+                    setSelectedFile(null);
+                    onFileChange?.(null);
+                    const fileInput = document.getElementById(`file-input-${title}`) as HTMLInputElement;
+                    if (fileInput) fileInput.value = '';
+                  }}
+                  className="text-green-400 hover:text-red-400 transition-colors text-sm"
+                  title="Remove file"
+                >
+                  ✕
+                </button>
               </div>
             )}
           </div>
@@ -58,7 +88,7 @@ export function InputPanel({ title, value, onChange, onFileChange, placeholder }
             <Button
               variant={inputMode === 'text' ? 'primary' : 'ghost'}
               size="md"
-              onClick={() => setInputMode('text')}
+              onClick={() => handleModeSwitch('text')}
               className="flex-1 font-bold px-4 py-2 text-xs tracking-wide"
               glow={false}
             >
@@ -67,7 +97,7 @@ export function InputPanel({ title, value, onChange, onFileChange, placeholder }
             <Button
               variant={inputMode === 'file' ? 'primary' : 'ghost'}
               size="md"
-              onClick={() => setInputMode('file')}
+              onClick={() => handleModeSwitch('file')}
               className="flex-1 font-bold px-4 py-2 text-xs tracking-wide"
               glow={false}
             >
